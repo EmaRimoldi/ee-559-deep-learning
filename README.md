@@ -76,7 +76,7 @@ conda activate ee-559
 ## 🧱 Project Structure
 
 ```text
-HateLens/
+ee-559-deep-learning/
 │
 ├── checkpoints/                       # Trained LoRA checkpoints by model & dataset
 │   ├── TinyLlama/
