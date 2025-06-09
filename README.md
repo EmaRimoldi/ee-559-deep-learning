@@ -3,21 +3,11 @@
 ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FF6A00?style=for-the-badge&logo=huggingface&logoColor=white)
 ![Pandas](https://img.shields.io/badge/pandas-%23150458?style=for-the-badge&logo=pandas&logoColor=white)
 
-# HateLens: Tiny LLMs for Efficient & Interpretable Hate Speech Detection
-
-## 👥 Authors
-| Name              | Affiliation           |
-| ----------------- | --------------------- |
-| Emanuele Rimoldi  | EPFL, EE-559 Project  |
-| …                 | …                     |
-
-## 📄 Abstract
-HateLens is a lightweight, explainable pipeline for hate speech detection. It fine-tunes decoder-only TinyLLMs with LoRA and employs LIME to provide token-level attributions before and after adaptation. Our best model (TinyLlama) achieves > 80 % accuracy on DynaHate while updating < 0.05 % of para
 
 
-# SmogSense | Team DGR | EPFL COM-480
+# # HateLens: Tiny LLMs for Efficient & Interpretable Hate Speech Detection
 
-## 👥 Team DGR
+## 👥 Team 48
 | Student's name | SCIPER |
 | -------------- | ------ |
 | [Beatrice Grassano](https://github.com/beagrs) | 370780 |
@@ -25,17 +15,20 @@ HateLens is a lightweight, explainable pipeline for hate speech detection. It fi
 | [Emanuele Rimoldi](https://github.com/EmaRimoldi) | 377013 |
 
 ## 📄 Deliverables
-- [Milestone1](./milestone1/Milestone1_DGR.pdf)
-- [Milestone2](./milestone2/Milestone2_DGR.pdf)
-- [ProcessBook](./milestone3/Processbook.pdf)
-- [Website](https://com-480-data-visualization.github.io/com-480-project-DGR/)
-- [Screencast](https://drive.google.com/file/d/1CwCQC62-vEC8ymORb9-4itADhIKu_CwO/view?usp=sharing) (download for better quality)
+- [Screencase](https://drive.google.com/file/d/1CwCQC62-vEC8ymORb9-4itADhIKu_CwO/view?usp=sharing) (download for better quality)
 
 ## 🌍 Description
 
-This project investigates how air quality in the European Union has evolved over the past 20 years and explores potential future trends based on current data. We analyze key pollutants, their sources, and their health and environmental impacts.
+HateLens is a lightweight, transparent pipeline designed to detect and explain hate speech on social platforms. By combining the contextual power of decoder-only TinyLLMs with parameter-efficient fine-tuning and post-hoc explainability, HateLens strikes a balance between high accuracy and minimal computational overhead.
 
-Through interactive visualizations, we aim to make complex data accessible and engaging for both experts and the general public. Additionally, a dedicated Curiosities section showcases compelling insights — such as the influence of electric vehicles on air quality — using striking and informative visuals.
+Specifically, HateLens:
+
+- **Leverages TinyLLMs**: Fine-tunes compact, decoder-only language models via Low-Rank Adaptation (LoRA), updating less than 0.05% of parameters to keep memory footprint and inference time low.
+- **Ensures Interpretability**: Integrates Local Interpretable Model-agnostic Explanations (LIME) to provide token-level attributions both before and after adaptation, making every classification decision transparent.
+- **Maintains Generative Capabilities**: Preserves the base model’s generative strengths by storing only a small set of differential weights, allowing seamless reuse for other tasks.
+- **Delivers State-of-the-Art Performance**: On the DynaHate benchmark, our best TinyLLM achieves over 80% accuracy—an improvement of more than 25% compared to its pre-adaptation baseline.
+
+With HateLens, researchers and practitioners gain a fast, reliable, and explainable tool to curb the spread of hateful content without sacrificing efficiency or clarity. Perfect for deployment on edge devices, real-time moderation systems, and research environments where both performance and transparency matter.  
 
 ## Data
 
