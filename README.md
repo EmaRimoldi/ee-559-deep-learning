@@ -22,17 +22,17 @@ Below is an overview of the main folders and scripts in the repository, showing 
 
 📦 HateLens/  
 ├── 📁 **checkpoints/**  
-│   ├── **TinyLlama/**  
-│   │   ├── **dynahate/**      ← 3 LoRA-tuned checkpoints (3 seeds) on DynaHate  
-│   │   └── **hatecheck/**     ← 3 LoRA-tuned checkpoints (3 seeds) on HateCheck  
-│   ├── **Phi-2/**  
-│   │   ├── **dynahate/**  
-│   │   └── **hatecheck/**  
-│   └── **OPT-1.3B/**  
-│       ├── **dynahate/**  
-│       └── **hatecheck/**  
-│  
-├── 📁 **data/**               ← Raw & preprocessed datasets  
+    ├── **TinyLlama/**  
+    │   ├── **dynahate/**      ← 3 LoRA-tuned checkpoints (3 seeds) on DynaHate  
+    │   └── **hatecheck/**     ← 3 LoRA-tuned checkpoints (3 seeds) on HateCheck  
+    ├── **Phi-2/**  
+    │   ├── **dynahate/**  
+    │   └── **hatecheck/**  
+    └── **OPT-1.3B/**  
+        ├── **dynahate/**  
+        └── **hatecheck/**  
+   
+ ── 📁 **data/**               ← Raw & preprocessed datasets  
 │   ├── **dynahate/**  
 │   └── **hatecheck/**  
 │  
