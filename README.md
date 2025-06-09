@@ -1,143 +1,119 @@
-# HateLens: Tiny LLMs for Efficient and Interpretable Hate Speech Detection
+Adatta la struttura di questo readme ai nostri contenuti: 
 
-## Introduction
+Ridammi il full markdown qui in chat.
 
-HateLens is a lightweight, transparent pipeline designed to detect and explain hate speech on social platforms. By combining the contextual power of decoder-only TinyLLMs with parameter-efficient fine-tuning and post-hoc explainability, HateLens strikes a balance between high accuracy and minimal computational overhead.
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 
-Specifically, HateLens:
+# SmogSense | Team DGR | EPFL COM-480
 
-- **Leverages TinyLLMs**: Fine-tunes compact, decoder-only language models via Low-Rank Adaptation (LoRA), updating less than 0.05% of parameters to keep memory footprint and inference time low.
-- **Ensures Interpretability**: Integrates Local Interpretable Model-agnostic Explanations (LIME) to provide token-level attributions both before and after adaptation, making every classification decision transparent.
-- **Maintains Generative Capabilities**: Preserves the base model’s generative strengths by storing only a small set of differential weights, allowing seamless reuse for other tasks.
-- **Delivers State-of-the-Art Performance**: On the DynaHate benchmark, our best TinyLLM achieves over 80% accuracy; an improvement of more than 25% compared to its pre-adaptation baseline.
+## 👥 Team DGR
+| Student's name | SCIPER |
+| -------------- | ------ |
+| [Beatrice Grassano](https://github.com/beagrs) | 370780 |
+| [Lorenzo Drudi](https://github.com/drudilorenzo/) | 367980 |
+| [Emanuele Rimoldi](https://github.com/EmaRimoldi) | 377013 |
 
-With HateLens, researchers and practitioners gain a fast, reliable, and explainable tool to curb the spread of hateful content without sacrificing efficiency or clarity. Perfect for deployment on edge devices, real-time moderation systems, and research environments where both performance and transparency matter.  
+## 📄 Deliverables
+- [Milestone1](./milestone1/Milestone1_DGR.pdf)
+- [Milestone2](./milestone2/Milestone2_DGR.pdf)
+- [ProcessBook](./milestone3/Processbook.pdf)
+- [Website](https://com-480-data-visualization.github.io/com-480-project-DGR/)
+- [Screencast](https://drive.google.com/file/d/1CwCQC62-vEC8ymORb9-4itADhIKu_CwO/view?usp=sharing) (download for better quality)
 
+## 🌍 Description
 
+This project investigates how air quality in the European Union has evolved over the past 20 years and explores potential future trends based on current data. We analyze key pollutants, their sources, and their health and environmental impacts.
 
+Through interactive visualizations, we aim to make complex data accessible and engaging for both experts and the general public. Additionally, a dedicated Curiosities section showcases compelling insights — such as the influence of electric vehicles on air quality — using striking and informative visuals.
 
-## 📂 Project Structure
+## Data
 
-Below is an overview of the main folders and scripts in the repository, showing how components of the HateLens pipeline are organized:
+### 📊 AirBase
 
-📦 HateLens/  
-├── 📁 **checkpoints/**  
-    ├── **TinyLlama/**  
-    │   ├── **dynahate/**      ← 3 LoRA-tuned checkpoints (3 seeds) on DynaHate  
-    │   └── **hatecheck/**     ← 3 LoRA-tuned checkpoints (3 seeds) on HateCheck  
-    ├── **Phi-2/**  
-    │   ├── **dynahate/**  
-    │   └── **hatecheck/**  
-    └── **OPT-1.3B/**  
-        ├── **dynahate/**  
-        └── **hatecheck/**  
-   
- ── 📁 **data/**               ← Raw & preprocessed datasets  
-│   ├── **dynahate/**  
-│   └── **hatecheck/**  
-│  
-├── 📁 **experiments/**        ← YAML configs for each model  
-│   ├── `TinyLlama.yaml`      ← Training hyperparameters & LoRA settings  
-│   ├── `Phi-2.yaml`  
-│   └── `OPT-1.3B.yaml`  
-│  
-├── 📁 **results/**            ← Evaluation outputs & plots  
-│   ├── **metrics/**          ← CSVs of accuracy, F1, etc.  
-│   └── **lime/**             ← Token-attribution scores (pre/post FT)  
-│  
-├── 📁 **utils/**              ← Helper modules & utilities  
-│   └── `preprocessing.py`    ← Text cleaning, tokenization scripts  
-│  
-├── 📄 `requirements.txt`      ← Python dependencies (LoRA, LIME, Transformers…)  
-│  
-├── 🛠️ `run_training_dynahate.sh`   ← Bash wrapper to train on DynaHate  
-├── 🛠️ `run_training_hatecheck.sh`  ← Bash wrapper to train on HateCheck  
-│  
-├── 🏋️‍♂️ `trainer_dynahate.py`    ← PyTorch Lightning trainer for DynaHate  
-├── 🏋️‍♂️ `trainer_hatecheck.py`   ← PyTorch Lightning trainer for HateCheck  
-│  
-├── 🔍 `evaluate_models.py`     ←  
-│     • `--dynahate` → evaluate best checkpoints on DynaHate  
-│     • `--hatecheck` → evaluate best checkpoints on HateCheck  
-│  
-└── 🔍 `compute_lime_scores.py` ←  
-      • `--dynahate` → compute LIME attributions on DynaHate  
-      • `--hatecheck` → compute LIME attributions on HateCheck  
+Maintained by the European Environment Agency (EEA), [AirBase](https://www.eea.europa.eu/en/datahub/datahubitem-view/778ef9f5-6293-4846-badd-56a29c70880d?activeAccordion=1087599) is our primary data source. It compiles air quality measurements from EU Member States, EEA countries, and partner nations. The dataset includes a multiyear time series of pollutant levels, along with metadata on monitoring networks and stations.
 
+🧪 Scripts & Notebooks:
+- `data/download_eea_air_quality_data.py` — Python script to download AirBase data.
+- `analysis/eea_air_quality_data_eda.ipynb` — Initial exploratory data analysis of the dataset.
+- `preprocess/*` — Scripts used to aggregate and clean the data into the final file `air_quality_data.json`, which is consumed by the web app. 
 
+🔗 Useful Links:
+- 📄 [Official Datasheet](https://www.eea.europa.eu/data-and-maps/data/airbase-the-european-air-quality-database-6/airbase-products/data/file)
+- 🐍 [Python Downloader](https://github.com/JohnPaton/airbase)
 
-- **checkpoints/** 📦  
-  Contains trained model weights organized by architecture and dataset. Each subfolder holds three seed-based LoRA checkpoints.
+### 🌍 Global EV Outlook 2025
 
-- **data/** 🗄️  
-  Raw and preprocessed text samples for both DynaHate and HateCheck benchmarks.
+The Global EV Outlook [1] is an annual report that presents key trends and developments in electric mobility worldwide. It is developed with the support of the Electric Vehicles Initiative (EVI).
 
-- **experiments/** ⚙️  
-  YAML configuration files capturing all hyperparameters and LoRA settings used during fine-tuning.
+For further insights, refer to the dedicated article by Our World in Data [2].
 
-- **results/** 📊  
-  Evaluation metrics (accuracy, F1-score) and LIME attribution outputs, ready for plotting and analysis.
+🧪 Scripts & Notebooks:
+- `preprocess/build_ev_share_json.ipynb` — Notebook used to clean and process the data into the file electric_car_share_data.json, which is consumed by the web app.
 
-- **utils/** 🛠️  
-  Utility scripts for data preprocessing, tokenization, and other common tasks.
+📚 Citations:
+- [1] IEA (2025), Global EV Outlook 2025, IEA, Paris. https://www.iea.org/reports/global-ev-outlook-2025 — Licence: CC BY 4.0
+- [2] Hannah Ritchie (2024), Tracking Global Data on Electric Vehicles. Published online at OurWorldinData.org. Retrieved from: https://ourworldindata.org/electric-car-sales
 
-- **run_training_dynahate.sh** 🏃  
-  Shell scripts to kick off batch training jobs on dynahate dataset, selecting model via command-line flags.
+## 📦 Conda Env
 
-- **trainer_dynahate*.py** 🏋️‍  
-  Training pipelines leveraging PyTorch (or Lightning) to fine-tune each TinyLLM with LoRA.
-
-- **evaluate_models.py** & **compute_lime_scores.py** 🔬  
-  Python scripts to run evaluation and explainability analyses pre- and post-fine-tuning.
-
-## 🏁 Getting Started
-
-Follow these steps to set up your environment and launch training on the DynaHate dataset.
-
-### 1. Create & Activate Conda Environment
+To run the provided Python scripts and notebooks, use the `dataviz` conda environment.
+You can create it by running the following command:
 
 ```bash
-# Create a new conda environment named "hatelens"
-conda create -n hatelens python=3.10 -y
+conda env create -f dataviz.yml
+```
 
-# Activate it
-conda activate hatelens
+Once created, activate the environment with:
 
-# From the project root
-pip install --upgrade pip
-pip install -r requirements.txt
+```bash
+conda activate dataviz
+```
 
-Open trainer_dynahate.py (same for trainer_hatecheck.py) and find:
+## 🧱 Project Structure
 
-wandb.init(
-    project=f"model-training-{config['model_name']}",
-    entity="emanuelerimoldi7-epfl",
-    config=config
-)
+```text
+COM-480-PROJECT-DGR/
+│
+├── analysis/                         # Jupyter notebooks for EDA
+│   └── eea_air_quality_data_eda.ipynb
+│
+├── data/                             # Datasets and Download scripts
+│   ├── air_quality_data.json
+│   ├── electric_car_share_data.json
+│   ├── download_eea_air_quality_data.py
+│   └── scraper_immobiliare_it.py
+│
+├── preprocess/                       # Scripts for cleaning and preprocessing
+│   ├── aggregate_air_quality_data.py
+│   ├── build_air_quality_json.ipynb
+│   ├── build_ev_share_json.ipynb
+│   └── map_pollutant_code_to_name.py
+│
+├── docs/                             # Website
+│   ├── assets/...
+│   ├── index.html
+│   ├── .nojekyll
+│
+├── milestone1/                       # Reports
+│   └── Milestone1_DGR.pdf
+├── milestone2/
+│   └── Milestone2_DGR.pdf
+├── milestone3/
+│   └── ProcessBook_DGR.pdf
+│
+├── dataviz.yml                       # Conda environment configuration
+├── .gitignore
+└── README.md                         # Project overview and instructions
+```
 
-Replace the entity value with your own W&B username.
+## 🗂️ Folder Highlights
 
-# Make the script executable
-chmod +x run_training_dynahate.sh
-
-# Run it
-./run_training_dynahate.sh
-
-You should see a prompt like:
-Select the config file for training:
-1) TinyLlama Model (experiments/TinyLlama.yaml)
-2) OPT-1.3B Model (experiments/OPT-1.3B.yaml)
-3) Phi-2 Model (experiments/Phi-2.yaml)
-Enter the number (1-3) to choose the model: 2
-You have selected the OPT-1.3B model with the config: experiments/OPT-1.3B.yaml
-
-Enter the number corresponding to your desired model (e.g. 1 for TinyLlama, 2 for OPT-1.3B, or 3 for Phi-2), and the training run will begin.
-
-
-
-
-
-
-
-
-
+- `data/` — Contains data files, as well as scripts for downloading the datasets.
+- `preprocess/` — Includes notebooks and scripts for cleaning and converting data into formats used by the web app.
+- `analysis/` — Exploratory analysis of air quality data using Jupyter.
+- `docs/` — Web app source code and assets, deployed via GitHub Pages.
+- `milestone*/` — Milestone report PDFs documenting project progress.
