@@ -5,14 +5,14 @@
 
 
 
-# # HateLens: Tiny LLMs for Efficient & Interpretable Hate Speech Detection
+# HateLens: Tiny LLMs for Efficient & Interpretable Hate Speech Detection
 
-## 👥 Team 48
+## 👥 Group 48
 | Student's name | SCIPER |
 | -------------- | ------ |
-| [Beatrice Grassano](https://github.com/beagrs) | 370780 |
-| [Lorenzo Drudi](https://github.com/drudilorenzo/) | 367980 |
+| [Vittoria Meroni](https://github.com/beagrs) | 370780 |
 | [Emanuele Rimoldi](https://github.com/EmaRimoldi) | 377013 |
+| [Simone Vicentini](https://github.com/drudilorenzo/) | 367980 |
 
 ## 📄 Deliverables
 - [Screencase](https://drive.google.com/file/d/1CwCQC62-vEC8ymORb9-4itADhIKu_CwO/view?usp=sharing) (download for better quality)
