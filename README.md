@@ -120,8 +120,17 @@ ee-559-deep-learning/
 
 ## 🗂️ Folder Highlights
 
-- `data/` — Contains data files, as well as scripts for downloading the datasets.
-- `preprocess/` — Includes notebooks and scripts for cleaning and converting data into formats used by the web app.
-- `analysis/` — Exploratory analysis of air quality data using Jupyter.
-- `docs/` — Web app source code and assets, deployed via GitHub Pages.
-- `milestone*/` — Milestone report PDFs documenting project progress.
+- `checkpoints/` — LoRA‐fine-tuned model weights, organized by TinyLlama, Phi-2 and OPT-1.3B, each with DynaHate and HateCheck seeds.  
+- `data/` — Raw and preprocessed DynaHate & HateCheck datasets ready for training and evaluation.  
+- `experiments/` — YAML config files specifying LoRA & training hyperparameters for each model.  
+- `results/` —  
+  - `metrics/`: CSVs with accuracy, F1-score, etc.  
+  - `lime/`: Token‐level attribution scores (pre- and post-fine-tuning).  
+- `utils/` — Helper modules for text dataset creation, visualization, and common utilities.  
+- **Root‐level scripts**:  
+  - `run_training_dynahate.sh` & `run_training_hatecheck.sh`: launch dataset‐specific training.  
+  - `trainer_dynahate.py` & `trainer_hatecheck.py`: PyTorch Lightning training pipelines.  
+  - `evaluate_models.py`: evaluate best checkpoints on DynaHate or HateCheck.  
+  - `compute_lime_scores.py`: generate LIME explanations for selected models.  
+- `requirements.txt` — Python, PyTorch, Transformers, LoRA, LIME and related dependencies.  
+
