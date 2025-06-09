@@ -120,7 +120,18 @@ ee-559-deep-learning/
 
 ## 🗂️ Folder Highlights
 
-- `checkpoints/` — LoRA‐fine-tuned model weights, organized by TinyLlama, Phi-2 and OPT-1.3B, each with DynaHate and HateCheck seeds.  
+- `checkpoints/` — LoRA‐fine-tuned model weights, organized by TinyLlama, Phi-2 and OPT-1.3B, each with DynaHate and HateCheck seeds.
+
+Because the `checkpoints.tar.gz` file is split into parts to comply with the 2 GB Git LFS limit, you can recombine them into a single archive by running:
+
+```bash
+cat checkpoints.tar.gz.part-* > checkpoints.tar.gz
+```
+Once the parts are merged, extract the contents with:
+```
+tar -xzvf checkpoints.tar.gz
+```
+
 - `data/` — Raw and preprocessed DynaHate & HateCheck datasets ready for training and evaluation.  
 - `experiments/` — YAML config files specifying LoRA & training hyperparameters for each model.  
 - `results/` —  
