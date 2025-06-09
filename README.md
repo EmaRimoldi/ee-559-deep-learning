@@ -94,9 +94,12 @@ ee-559-deep-learning/
 │   └── hatecheck/
 │
 ├── experiments/                       # YAML configs for each model
-│   ├── TinyLlama.yaml                 # LoRA & training hyperparameters
-│   ├── Phi-2.yaml
-│   └── OPT-1.3B.yaml
+│   ├── TinyLlama/                     # LoRA & training hyperparameters
+│   │   └── config.yaml
+│   ├── phi-2/                         # LoRA & training hyperparameters
+│   │   └── config.yaml
+│   └── opt/                           # LoRA & training hyperparameters
+│       └── config.yaml
 │
 ├── results/                           # Evaluation outputs & explainability scores
 │   ├── dynahate/                      # CSVs of accuracy, F1-score, etc.
