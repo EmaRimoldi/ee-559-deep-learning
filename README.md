@@ -1,12 +1,19 @@
-Adatta la struttura di questo readme ai nostri contenuti: 
-
-Ridammi il full markdown qui in chat.
-
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![PyTorch](https://img.shields.io/badge/pytorch-%EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FF6A00?style=for-the-badge&logo=huggingface&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-%23150458?style=for-the-badge&logo=pandas&logoColor=white)
+
+# HateLens: Tiny LLMs for Efficient & Interpretable Hate Speech Detection
+
+## 👥 Authors
+| Name              | Affiliation           |
+| ----------------- | --------------------- |
+| Emanuele Rimoldi  | EPFL, EE-559 Project  |
+| …                 | …                     |
+
+## 📄 Abstract
+HateLens is a lightweight, explainable pipeline for hate speech detection. It fine-tunes decoder-only TinyLLMs with LoRA and employs LIME to provide token-level attributions before and after adaptation. Our best model (TinyLlama) achieves > 80 % accuracy on DynaHate while updating < 0.05 % of para
+
 
 # SmogSense | Team DGR | EPFL COM-480
 
