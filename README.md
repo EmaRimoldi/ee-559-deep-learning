@@ -60,54 +60,62 @@ For further insights, refer to the dedicated article by Our World in Data [2].
 
 ## 📦 Conda Env
 
-To run the provided Python scripts and notebooks, use the `dataviz` conda environment.
+To run the provided Python scripts and notebooks, use the `ee-559` conda environment.
 You can create it by running the following command:
 
 ```bash
-conda env create -f dataviz.yml
+conda env create -f ee-559.yml
 ```
 
 Once created, activate the environment with:
 
 ```bash
-conda activate dataviz
+conda activate ee-559
 ```
 
 ## 🧱 Project Structure
 
 ```text
-COM-480-PROJECT-DGR/
+HateLens/
 │
-├── analysis/                         # Jupyter notebooks for EDA
-│   └── eea_air_quality_data_eda.ipynb
+├── checkpoints/                       # Trained LoRA checkpoints by model & dataset
+│   ├── TinyLlama/
+│   │   ├── dynahate/                  # 3 LoRA-tuned checkpoints (3 seeds) on DynaHate
+│   │   └── hatecheck/                 # 3 LoRA-tuned checkpoints (3 seeds) on HateCheck
+│   ├── Phi-2/
+│   │   ├── dynahate/
+│   │   └── hatecheck/
+│   └── opt/
+│       ├── dynahate/
+│       └── hatecheck/
 │
-├── data/                             # Datasets and Download scripts
-│   ├── air_quality_data.json
-│   ├── electric_car_share_data.json
-│   ├── download_eea_air_quality_data.py
-│   └── scraper_immobiliare_it.py
+├── data/                              # Raw & preprocessed datasets
+│   ├── dynahate/
+│   └── hatecheck/
 │
-├── preprocess/                       # Scripts for cleaning and preprocessing
-│   ├── aggregate_air_quality_data.py
-│   ├── build_air_quality_json.ipynb
-│   ├── build_ev_share_json.ipynb
-│   └── map_pollutant_code_to_name.py
+├── experiments/                       # YAML configs for each model
+│   ├── TinyLlama.yaml                 # LoRA & training hyperparameters
+│   ├── Phi-2.yaml
+│   └── OPT-1.3B.yaml
 │
-├── docs/                             # Website
-│   ├── assets/...
-│   ├── index.html
-│   ├── .nojekyll
+├── results/                           # Evaluation outputs & explainability scores
+│   ├── dynahate/                      # CSVs of accuracy, F1-score, etc.
+│   └── hatecheck/
 │
-├── milestone1/                       # Reports
-│   └── Milestone1_DGR.pdf
-├── milestone2/
-│   └── Milestone2_DGR.pdf
-├── milestone3/
-│   └── ProcessBook_DGR.pdf
+├── utils/                             # Helper modules & scripts
+│               
+├── requirements.txt                   # Python, PyTorch, Transformers, LoRA, LIME…
 │
-├── dataviz.yml                       # Conda environment configuration
-├── .gitignore
-└── README.md                         # Project overview and instructions
+├── run_training_dynahate.sh           # Bash wrapper to train on DynaHate
+├── run_training_hatecheck.sh          # Bash wrapper to train on HateCheck
+│
+├── trainer_dynahate.py                # PyTorch Lightning trainer for DynaHate
+├── trainer_hatecheck.py               # PyTorch Lightning trainer for HateCheck
+│
+├── evaluate_models.py                 
+│
+└── compute_lime_scores.py             
+
 ```
 
 ## 🗂️ Folder Highlights
