@@ -10,9 +10,9 @@
 ## 👥 Group 48
 | Student's name | SCIPER |
 | -------------- | ------ |
-| [Vittoria Meroni](https://github.com/beagrs) | 370780 |
+| [Vittoria Meroni](https://github.com/vittoriameroni) | 386722 |
 | [Emanuele Rimoldi](https://github.com/EmaRimoldi) | 377013 |
-| [Simone Vicentini](https://github.com/drudilorenzo/) | 367980 |
+| [Simone Vicentini](https://github.com/SimoVice/) | 378204 |
 
 ## 📄 Deliverables
 - [Screencase](https://drive.google.com/file/d/1CwCQC62-vEC8ymORb9-4itADhIKu_CwO/view?usp=sharing) (download for better quality)
