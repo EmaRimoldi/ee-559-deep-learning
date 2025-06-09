@@ -90,3 +90,54 @@ Below is an overview of the main folders and scripts in the repository, showing 
 - **evaluate_models.py** & **compute_lime_scores.py** 🔬  
   Python scripts to run evaluation and explainability analyses pre- and post-fine-tuning.
 
+## 🏁 Getting Started
+
+Follow these steps to set up your environment and launch training on the DynaHate dataset.
+
+### 1. Create & Activate Conda Environment
+
+```bash
+# Create a new conda environment named "hatelens"
+conda create -n hatelens python=3.10 -y
+
+# Activate it
+conda activate hatelens
+
+# From the project root
+pip install --upgrade pip
+pip install -r requirements.txt
+
+Open trainer_dynahate.py (same for trainer_hatecheck.py) and find:
+
+wandb.init(
+    project=f"model-training-{config['model_name']}",
+    entity="emanuelerimoldi7-epfl",
+    config=config
+)
+
+Replace the entity value with your own W&B username.
+
+# Make the script executable
+chmod +x run_training_dynahate.sh
+
+# Run it
+./run_training_dynahate.sh
+
+You should see a prompt like:
+Select the config file for training:
+1) TinyLlama Model (experiments/TinyLlama.yaml)
+2) OPT-1.3B Model (experiments/OPT-1.3B.yaml)
+3) Phi-2 Model (experiments/Phi-2.yaml)
+Enter the number (1-3) to choose the model: 2
+You have selected the OPT-1.3B model with the config: experiments/OPT-1.3B.yaml
+
+Enter the number corresponding to your desired model (e.g. 1 for TinyLlama, 2 for OPT-1.3B, or 3 for Phi-2), and the training run will begin.
+
+
+
+
+
+
+
+
+
