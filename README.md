@@ -25,7 +25,7 @@ Specifically, HateLens:
 
 - **Leverages TinyLLMs**: Fine-tunes compact, decoder-only language models via Low-Rank Adaptation (LoRA), updating less than 0.05% of parameters to keep memory footprint and inference time low.
 - **Ensures Interpretability**: Integrates Local Interpretable Model-agnostic Explanations (LIME) to provide token-level attributions both before and after adaptation, making every classification decision transparent.
-- **Delivers State-of-the-Art Performance**: Delivers State-of-the-Art Performance: On the DynaHate and HateCheck benchmarks, our best TinyLLM achieves over 80% accuracy on DynaHate and 99% on HateCheck, representing an improvement of more than 25% compared to its pre-adaptation baseline.
+- **Delivers State-of-the-Art Performance**: On the DynaHate and HateCheck benchmarks, our best TinyLLM achieves over 80% accuracy on DynaHate and 99% on HateCheck, representing an improvement of more than 25% compared to its pre-adaptation baseline.
 
 With HateLens, researchers and practitioners gain a fast, reliable, and explainable tool to curb the spread of hateful content without sacrificing efficiency or clarity. Perfect for deployment on edge devices, real-time moderation systems, and research environments where both performance and transparency matter.  
 
@@ -57,23 +57,25 @@ HateCheck was constructed via expert-designed templates and manual case crafting
 
 ## 📦 Conda Env
 
-To run the provided Python scripts and notebooks, create an environment using python ? , to replicate our results. 
-Using the requirements.txt file inside the repo, run the following commands:
+To run the provided Python scripts and notebooks and replicate our results, we recommend creating a dedicated Python environment (Python 3.9.10). To create the environment , you can use venv or conda. 
+Here is an example using venv:
 
 ```bash
-
+Python 3.9.10 -m venv tinyllm_env
+source tinyllm_env/bin/activate 
 ```
 
-Once created, activate the environment with:
+Use the requirements.txt file provided in the repository:
 
 ```bash
-
+pip install -r requirements.txt
 ```
+Some packages might cause compatibility issues, depending on your system configuration. In particular, be aware of potential problems with:
+-  `bitsandbites`
+-  `NVIDIA CUDA-related packages`
+-  `scipy==1.13.1`
 
-Observation: there could be problems with the follwoing packages: bitsandbites, e  scipy, in caso ci fossero problemi utilizzare le seguenti versioni: 
-
-
-
+If you encounter issues during installation or runtime, try using the latest available versions of these packages.
 
 
 
