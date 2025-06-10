@@ -14,8 +14,6 @@
 | [Emanuele Rimoldi](https://github.com/EmaRimoldi) | 377013 |
 | [Simone Vicentini](https://github.com/SimoVice/) | 378204 |
 
-## 📄 Deliverables
-- [Screencase](https://drive.google.com/file/d/1CwCQC62-vEC8ymORb9-4itADhIKu_CwO/view?usp=sharing) (download for better quality)
 
 ## 🌍 Description
 
