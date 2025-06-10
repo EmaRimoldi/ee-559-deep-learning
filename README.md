@@ -96,7 +96,7 @@ ee-559-deep-learning/
 │       └── config.yaml
 │
 ├── results/                           # Evaluation outputs & explainability scores
-│   ├── dynahate/                      # CSVs of accuracy, F1-score, etc.
+│   ├── dynahate/                  
 │   └── hatecheck/
 │
 ├── utils/                             # Helper modules & scripts
@@ -109,9 +109,9 @@ ee-559-deep-learning/
 ├── trainer_dynahate.py                # PyTorch Lightning trainer for DynaHate
 ├── trainer_hatecheck.py               # PyTorch Lightning trainer for HateCheck
 │
-├── evaluate_models.py                 
+├── evaluate_models.py                 # Evaluate best model performances
 │
-└── compute_lime_scores.py             
+└── compute_lime_scores.py             # Compute LIME scores displayed in results/      
 
 ```
 
@@ -120,13 +120,14 @@ ee-559-deep-learning/
 - `data/` — Raw and preprocessed DynaHate & HateCheck datasets ready for training and evaluation.  
 - `experiments/` — YAML config files specifying LoRA & training hyperparameters for each model.  
 - `results/` —  
-  - `metrics/`: CSVs with accuracy, F1-score, etc.  
-  - `lime/`: Token‐level attribution scores (pre- and post-fine-tuning).  
+  - `dynahate/`: Metrics plots, LIME scores barplots, for dynahate  
+  - `hatecheck/`: Metrics plots, LIME scores barplots, for dynahate  
 - `utils/` — Helper modules for text dataset creation, visualization, and common utilities.  
+
 - **Root‐level scripts**:  
   - `run_training_dynahate.sh` & `run_training_hatecheck.sh`: launch dataset‐specific training.  
   - `trainer_dynahate.py` & `trainer_hatecheck.py`: PyTorch Lightning training pipelines.  
-  - `evaluate_models.py`: evaluate best checkpoints on DynaHate or HateCheck.  
-  - `compute_lime_scores.py`: generate LIME explanations for selected models.  
-- `requirements.txt` — Python, PyTorch, Transformers, LoRA, LIME and related dependencies.  
+  - `evaluate_models.py`: evaluate best checkpoints on DynaHate or HateCheck. Use --<datasets_name> to select the dataset to evaluate.  
+  - `compute_lime_scores.py`: generate LIME explanations for selected models. Use --<dataset_name> to select the dataset on which to compute LIME scores.
+  - `requirements.txt` — Python, PyTorch, Transformers, LoRA, LIME and related dependencies.  
 
