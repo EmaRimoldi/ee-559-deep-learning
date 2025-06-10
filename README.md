@@ -10,9 +10,9 @@
 ## 👥 Group 48
 | Student's name | SCIPER |
 | -------------- | ------ |
-| [Vittoria Meroni](https://github.com/beagrs) | 370780 |
+| [Vittoria Meroni](https://github.com/vittoriameroni) | 386722 |
 | [Emanuele Rimoldi](https://github.com/EmaRimoldi) | 377013 |
-| [Simone Vicentini](https://github.com/drudilorenzo/) | 367980 |
+| [Simone Vicentini](https://github.com/SimoVice/) | 378204 |
 
 ## 📄 Deliverables
 - [Screencase](https://drive.google.com/file/d/1CwCQC62-vEC8ymORb9-4itADhIKu_CwO/view?usp=sharing) (download for better quality)
@@ -25,81 +25,79 @@ Specifically, HateLens:
 
 - **Leverages TinyLLMs**: Fine-tunes compact, decoder-only language models via Low-Rank Adaptation (LoRA), updating less than 0.05% of parameters to keep memory footprint and inference time low.
 - **Ensures Interpretability**: Integrates Local Interpretable Model-agnostic Explanations (LIME) to provide token-level attributions both before and after adaptation, making every classification decision transparent.
-- **Maintains Generative Capabilities**: Preserves the base model’s generative strengths by storing only a small set of differential weights, allowing seamless reuse for other tasks.
-- **Delivers State-of-the-Art Performance**: On the DynaHate benchmark, our best TinyLLM achieves over 80% accuracy—an improvement of more than 25% compared to its pre-adaptation baseline.
+- **Delivers State-of-the-Art Performance**: On the DynaHate and HateCheck benchmarks, our best TinyLLM achieves over 80% accuracy on DynaHate and 99% on HateCheck, representing an improvement of more than 25% compared to its pre-adaptation baseline.
 
 With HateLens, researchers and practitioners gain a fast, reliable, and explainable tool to curb the spread of hateful content without sacrificing efficiency or clarity. Perfect for deployment on edge devices, real-time moderation systems, and research environments where both performance and transparency matter.  
 
 ## Data
 
-### 📊 AirBase
+### 🧐 Dynahate
 
-Maintained by the European Environment Agency (EEA), [AirBase](https://www.eea.europa.eu/en/datahub/datahubitem-view/778ef9f5-6293-4846-badd-56a29c70880d?activeAccordion=1087599) is our primary data source. It compiles air quality measurements from EU Member States, EEA countries, and partner nations. The dataset includes a multiyear time series of pollutant levels, along with metadata on monitoring networks and stations.
+The Dynamically Generated Hate Speech Dataset (DynaHate) [1] was selected for its broad coverage of diverse hate expressions and its balanced class distribution (54% hate, 46% not hate). This eliminates the need for oversampling or augmentation, improving training stability.
 
-🧪 Scripts & Notebooks:
-- `data/download_eea_air_quality_data.py` — Python script to download AirBase data.
-- `analysis/eea_air_quality_data_eda.ipynb` — Initial exploratory data analysis of the dataset.
-- `preprocess/*` — Scripts used to aggregate and clean the data into the final file `air_quality_data.json`, which is consumed by the web app. 
+DynaHate was developed through an iterative human-model co-annotation process, yielding over 41,000 synthetic samples labeled as hate or nothate. Each entry includes numerous metadata, such as the hate type (Animosity, Derogation, Dehumanization, Threatening, and Support for Hateful Entities) and target group. The dataset is licensed under CC-BY 4.0.
+
 
 🔗 Useful Links:
-- 📄 [Official Datasheet](https://www.eea.europa.eu/data-and-maps/data/airbase-the-european-air-quality-database-6/airbase-products/data/file)
-- 🐍 [Python Downloader](https://github.com/JohnPaton/airbase)
+- 📄 [Official Repository](https://github.com/bvidgen/Dynamically-Generated-Hate-Speech-Dataset)
+  
+### 🕵️ Hatecheck
 
-### 🌍 Global EV Outlook 2025
+The HateCheck suite [2] was chosen for its fine-grained, functional evaluation of hate speech models across 29 targeted tests and seven protected groups (women, trans people, gay people, Black people, disabled people, Muslims, immigrants). This allows for stable and diagnostic model assessments without the need for data augmentation or oversampling.
 
-The Global EV Outlook [1] is an annual report that presents key trends and developments in electric mobility worldwide. It is developed with the support of the Electric Vehicles Initiative (EVI).
+HateCheck was constructed via expert-designed templates and manual case crafting to produce 3,901 candidate examples, of which 3,728 were retained after validation by five trained annotators. Each case is labeled as hateful or non-hateful and annotated with rich metadata. The dataset is released under a CC-BY 4.0 license.
 
-For further insights, refer to the dedicated article by Our World in Data [2].
+🔗 Useful Links:
+- 📄 [Official Repository](https://github.com/paul-rottger/hatecheck-data)
 
-🧪 Scripts & Notebooks:
-- `preprocess/build_ev_share_json.ipynb` — Notebook used to clean and process the data into the file electric_car_share_data.json, which is consumed by the web app.
 
 📚 Citations:
-- [1] IEA (2025), Global EV Outlook 2025, IEA, Paris. https://www.iea.org/reports/global-ev-outlook-2025 — Licence: CC BY 4.0
-- [2] Hannah Ritchie (2024), Tracking Global Data on Electric Vehicles. Published online at OurWorldinData.org. Retrieved from: https://ourworldindata.org/electric-car-sales
+- [1] Vidgen, B., et al. (2021). Learning from Machines: Dataset Generation with Dynamic Human-Model Co-Annotation. Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing.
+- [2] Röttger, P., et al. (2021). HateCheck: Functional Tests for Hate Speech Detection Models. Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics.
 
 ## 📦 Conda Env
 
-To run the provided Python scripts and notebooks, use the `ee-559` conda environment.
-You can create it by running the following command:
+To run the provided Python scripts and notebooks and replicate our results, we recommend creating a dedicated Python environment (Python 3.9.10). To create the environment , you can use venv or conda. 
+Here is an example using venv:
 
 ```bash
-conda env create -f ee-559.yml
+Python 3.9.10 -m venv tinyllm_env
+source tinyllm_env/bin/activate 
 ```
 
-Once created, activate the environment with:
+Use the requirements.txt file provided in the repository:
 
 ```bash
-conda activate ee-559
+pip install -r requirements.txt
 ```
+Some packages might cause compatibility issues, depending on your system configuration. In particular, be aware of potential problems with:
+-  `bitsandbites`
+-  `NVIDIA CUDA-related packages`
+-  `scipy==1.13.1`
+
+If you encounter issues during installation or runtime, try using the latest available versions of these packages.
+
+
 
 ## 🧱 Project Structure
 
 ```text
 ee-559-deep-learning/
 │
-├── checkpoints/                       # Trained LoRA checkpoints by model & dataset
-│   ├── TinyLlama/
-│   │   ├── dynahate/                  # 3 LoRA-tuned checkpoints (3 seeds) on DynaHate
-│   │   └── hatecheck/                 # 3 LoRA-tuned checkpoints (3 seeds) on HateCheck
-│   ├── Phi-2/
-│   │   ├── dynahate/
-│   │   └── hatecheck/
-│   └── opt/
-│       ├── dynahate/
-│       └── hatecheck/
-│
 ├── data/                              # Raw & preprocessed datasets
 │   ├── dynahate/
 │   └── hatecheck/
 │
 ├── experiments/                       # YAML configs for each model
-│   ├── TinyLlama.yaml                 # LoRA & training hyperparameters
-│   ├── Phi-2.yaml
-│   └── OPT-1.3B.yaml
+│   ├── TinyLlama/                     # LoRA & training hyperparameters
+│   │   └── config.yaml
+│   ├── phi-2/                         # LoRA & training hyperparameters
+│   │   └── config.yaml
+│   └── opt/                           # LoRA & training hyperparameters
+│       └── config.yaml
 │
 ├── results/                           # Evaluation outputs & explainability scores
-│   ├── dynahate/                      # CSVs of accuracy, F1-score, etc.
+│   ├── dynahate/                  
 │   └── hatecheck/
 │
 ├── utils/                             # Helper modules & scripts
@@ -112,25 +110,25 @@ ee-559-deep-learning/
 ├── trainer_dynahate.py                # PyTorch Lightning trainer for DynaHate
 ├── trainer_hatecheck.py               # PyTorch Lightning trainer for HateCheck
 │
-├── evaluate_models.py                 
+├── evaluate_models.py                 # Evaluate best model performances
 │
-└── compute_lime_scores.py             
+└── compute_lime_scores.py             # Compute LIME scores displayed in results/      
 
 ```
 
 ## 🗂️ Folder Highlights
 
-- `checkpoints/` — LoRA‐fine-tuned model weights, organized by TinyLlama, Phi-2 and OPT-1.3B, each with DynaHate and HateCheck seeds.  
 - `data/` — Raw and preprocessed DynaHate & HateCheck datasets ready for training and evaluation.  
 - `experiments/` — YAML config files specifying LoRA & training hyperparameters for each model.  
 - `results/` —  
-  - `metrics/`: CSVs with accuracy, F1-score, etc.  
-  - `lime/`: Token‐level attribution scores (pre- and post-fine-tuning).  
+  - `dynahate/`: Metrics plots, LIME scores barplots, for dynahate  
+  - `hatecheck/`: Metrics plots, LIME scores barplots, for dynahate  
 - `utils/` — Helper modules for text dataset creation, visualization, and common utilities.  
+
 - **Root‐level scripts**:  
   - `run_training_dynahate.sh` & `run_training_hatecheck.sh`: launch dataset‐specific training.  
   - `trainer_dynahate.py` & `trainer_hatecheck.py`: PyTorch Lightning training pipelines.  
-  - `evaluate_models.py`: evaluate best checkpoints on DynaHate or HateCheck.  
-  - `compute_lime_scores.py`: generate LIME explanations for selected models.  
-- `requirements.txt` — Python, PyTorch, Transformers, LoRA, LIME and related dependencies.  
+  - `evaluate_models.py`: evaluate best checkpoints on DynaHate or HateCheck. Use --<datasets_name> to select the dataset to evaluate.  
+  - `compute_lime_scores.py`: generate LIME explanations for selected models. Use --<dataset_name> to select the dataset on which to compute LIME scores.
+  - `requirements.txt` — Python, PyTorch, Transformers, LoRA, LIME and related dependencies.  
 
