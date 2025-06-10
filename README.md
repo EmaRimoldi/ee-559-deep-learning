@@ -61,8 +61,8 @@ To run the provided Python scripts and notebooks and replicate our results, we r
 Here is an example using venv:
 
 ```bash
-Python 3.9.10 -m venv tinyllm_env
-source tinyllm_env/bin/activate 
+Python 3.9.10 -m venv ee-559
+source ee-559/bin/activate 
 ```
 
 Use the requirements.txt file provided in the repository:
