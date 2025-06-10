@@ -32,46 +32,51 @@ With HateLens, researchers and practitioners gain a fast, reliable, and explaina
 
 ## Data
 
-### 📊 AirBase
+### 🧐 Dynahate
 
-Maintained by the European Environment Agency (EEA), [AirBase](https://www.eea.europa.eu/en/datahub/datahubitem-view/778ef9f5-6293-4846-badd-56a29c70880d?activeAccordion=1087599) is our primary data source. It compiles air quality measurements from EU Member States, EEA countries, and partner nations. The dataset includes a multiyear time series of pollutant levels, along with metadata on monitoring networks and stations.
+The Dynamically Generated Hate Speech Dataset (DynaHate) [1] was selected for its broad coverage of diverse hate expressions and its balanced class distribution (54% hate, 46% not hate). This eliminates the need for oversampling or augmentation, improving training stability.
 
-🧪 Scripts & Notebooks:
-- `data/download_eea_air_quality_data.py` — Python script to download AirBase data.
-- `analysis/eea_air_quality_data_eda.ipynb` — Initial exploratory data analysis of the dataset.
-- `preprocess/*` — Scripts used to aggregate and clean the data into the final file `air_quality_data.json`, which is consumed by the web app. 
+DynaHate was developed through an iterative human-model co-annotation process, yielding over 41,000 synthetic samples labeled as hate or nothate. Each entry includes numerous metadata, such as the hate type (Animosity, Derogation, Dehumanization, Threatening, and Support for Hateful Entities) and target group. The dataset is licensed under CC-BY 4.0.
+
 
 🔗 Useful Links:
-- 📄 [Official Datasheet](https://www.eea.europa.eu/data-and-maps/data/airbase-the-european-air-quality-database-6/airbase-products/data/file)
-- 🐍 [Python Downloader](https://github.com/JohnPaton/airbase)
+- 📄 [Official Repository](https://github.com/bvidgen/Dynamically-Generated-Hate-Speech-Dataset)
+- 
+### 🕵️ Hatecheck
 
-### 🌍 Global EV Outlook 2025
+The HateCheck suite [2] was chosen for its fine-grained, functional evaluation of hate speech models across 29 targeted tests and seven protected groups (women, trans people, gay people, Black people, disabled people, Muslims, immigrants). This allows for stable and diagnostic model assessments without the need for data augmentation or oversampling.
 
-The Global EV Outlook [1] is an annual report that presents key trends and developments in electric mobility worldwide. It is developed with the support of the Electric Vehicles Initiative (EVI).
+HateCheck was constructed via expert-designed templates and manual case crafting to produce 3,901 candidate examples, of which 3,728 were retained after validation by five trained annotators. Each case is labeled as hateful or non-hateful and annotated with rich metadata. The dataset is released under a CC-BY 4.0 license.
 
-For further insights, refer to the dedicated article by Our World in Data [2].
+🔗 Useful Links:
+- 📄 [Official Repository](https://github.com/paul-rottger/hatecheck-data)
 
-🧪 Scripts & Notebooks:
-- `preprocess/build_ev_share_json.ipynb` — Notebook used to clean and process the data into the file electric_car_share_data.json, which is consumed by the web app.
 
 📚 Citations:
-- [1] IEA (2025), Global EV Outlook 2025, IEA, Paris. https://www.iea.org/reports/global-ev-outlook-2025 — Licence: CC BY 4.0
-- [2] Hannah Ritchie (2024), Tracking Global Data on Electric Vehicles. Published online at OurWorldinData.org. Retrieved from: https://ourworldindata.org/electric-car-sales
+- [1] Vidgen, B., et al. (2021). Learning from Machines: Dataset Generation with Dynamic Human-Model Co-Annotation. Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing.
+- [2] Röttger, P., et al. (2021). HateCheck: Functional Tests for Hate Speech Detection Models. Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics.
 
 ## 📦 Conda Env
 
-To run the provided Python scripts and notebooks, use the `ee-559` conda environment.
-You can create it by running the following command:
+To run the provided Python scripts and notebooks, create an environment using python ? , to replicate our results. 
+Using the requirements.txt file inside the repo, run the following commands:
 
 ```bash
-conda env create -f ee-559.yml
+
 ```
 
 Once created, activate the environment with:
 
 ```bash
-conda activate ee-559
+
 ```
+
+Observation: there could be problems with the follwoing packages: bitsandbites, e  scipy, in caso ci fossero problemi utilizzare le seguenti versioni: 
+
+
+
+
+
 
 ## 🧱 Project Structure
 
