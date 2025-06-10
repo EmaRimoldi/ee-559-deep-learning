@@ -41,7 +41,7 @@ DynaHate was developed through an iterative human-model co-annotation process, y
 
 🔗 Useful Links:
 - 📄 [Official Repository](https://github.com/bvidgen/Dynamically-Generated-Hate-Speech-Dataset)
-- 
+  
 ### 🕵️ Hatecheck
 
 The HateCheck suite [2] was chosen for its fine-grained, functional evaluation of hate speech models across 29 targeted tests and seven protected groups (women, trans people, gay people, Black people, disabled people, Muslims, immigrants). This allows for stable and diagnostic model assessments without the need for data augmentation or oversampling.
@@ -83,17 +83,6 @@ Observation: there could be problems with the follwoing packages: bitsandbites, 
 ```text
 ee-559-deep-learning/
 │
-├── checkpoints/                       # Trained LoRA checkpoints by model & dataset
-│   ├── TinyLlama/
-│   │   ├── dynahate/                  # 3 LoRA-tuned checkpoints (3 seeds) on DynaHate
-│   │   └── hatecheck/                 # 3 LoRA-tuned checkpoints (3 seeds) on HateCheck
-│   ├── Phi-2/
-│   │   ├── dynahate/
-│   │   └── hatecheck/
-│   └── opt/
-│       ├── dynahate/
-│       └── hatecheck/
-│
 ├── data/                              # Raw & preprocessed datasets
 │   ├── dynahate/
 │   └── hatecheck/
@@ -127,18 +116,6 @@ ee-559-deep-learning/
 ```
 
 ## 🗂️ Folder Highlights
-
-- `checkpoints/` — LoRA‐fine-tuned model weights, organized by TinyLlama, Phi-2 and OPT-1.3B, each with DynaHate and HateCheck seeds.
-
-Because the `checkpoints.tar.gz` file is split into parts to comply with the 2 GB Git LFS limit, you can recombine them into a single archive by running:
-
-```bash
-cat checkpoints.tar.gz.part-* > checkpoints.tar.gz
-```
-Once the parts are merged, extract the contents with:
-```
-tar -xzvf checkpoints.tar.gz
-```
 
 - `data/` — Raw and preprocessed DynaHate & HateCheck datasets ready for training and evaluation.  
 - `experiments/` — YAML config files specifying LoRA & training hyperparameters for each model.  
